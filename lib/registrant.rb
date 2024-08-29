@@ -26,4 +26,8 @@ class Registrant
     def license_data
         @license_data
     end
+
+    def earn_permit
+        @permit = true
+    end
 end
