@@ -33,14 +33,28 @@ RSpec.describe Facility do
     end
   end
 
+  describe '#add a service to a facility' do
+    it 'adds Vehicle Registration to facility 1' do
+      @facility_1.add_service('Vehicle Registration')
+      expect(@facility_1.services).to eq(['Vehicle Registration'])
+    end
+  end
+
   describe '#registered vehicles' do
     it 'registered vehicles is an array' do
-      expect(@facility.registered_vehicles).to eq([])
+      expect(@facility_1.registered_vehicles).to eq([])
     end
   end
 
   describe '#collected fees' do
     it 'collected fees is 0' do
+      expect(@facility_1.collected_fees).to eq(0)
+    end
+  end
+
+  describe '#register vehicle' do
+    xit 'registers a vehicle by adding it to the registered vehicles array' do
+      expect(@facility.registered_vehicles).to eq()
     end
   end
 end
