@@ -13,9 +13,9 @@ RSpec.describe Facility do
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
 
     #adding registrant functionality for iteration 2
-    registrant_1 = Registrant.new('Bruce', 18, true)
-    registrant_2 = Registrant.new('Penny', 16)
-    registrant_3 = Registrant.new('Tucker', 15)
+    # registrant_1 = Registrant.new('Bruce', 18, {:written => false, :license => false, :renewed => false}, true)
+    # registrant_2 = Registrant.new('Penny', 16, {:written => false, :license => false, :renewed => false})
+    # registrant_3 = Registrant.new('Tucker', 15, {:written => false, :license => false, :renewed => false})
 
   end
   describe '#initialize' do
@@ -58,9 +58,9 @@ RSpec.describe Facility do
   end
 
   describe '#register vehicle' do
-    xit 'registers a vehicle by adding it to the registered vehicles array' do
+    it 'registers a vehicle by adding it to the registered vehicles array' do
       @facility_1.register_vehicle(@cruz)
-      expect(@facility_1.registered_vehicles).to eq(@registered_vehicles[0])
+      expect(@facility_1.registered_vehicles).to eq([@cruz])
     end
   end
 end
