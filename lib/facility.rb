@@ -19,6 +19,13 @@ class Facility
     @services << service
   end
 
+  def register_vehicle(vehicle)
+    #update registration date
+
+    @registered_vehicles << vehicle
+    # require 'pry'; binding.pry
+  end
+
   def registered_vehicles
     @registered_vehicles
   end
