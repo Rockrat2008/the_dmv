@@ -13,9 +13,9 @@ RSpec.describe Facility do
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
 
     #adding registrant functionality for iteration 2
-    # registrant_1 = Registrant.new('Bruce', 18, {:written => false, :license => false, :renewed => false}, true)
-    # registrant_2 = Registrant.new('Penny', 16, {:written => false, :license => false, :renewed => false})
-    # registrant_3 = Registrant.new('Tucker', 15, {:written => false, :license => false, :renewed => false})
+    @registrant_1 = Registrant.new('Bruce', 18, true)
+    # @registrant_2 = Registrant.new('Penny', 16, {:written => false, :license => false, :renewed => false})
+    # @registrant_3 = Registrant.new('Tucker', 15, {:written => false, :license => false, :renewed => false})
 
   end
   describe '#initialize' do
@@ -59,8 +59,32 @@ RSpec.describe Facility do
 
   describe '#register vehicle' do
     it 'registers a vehicle by adding it to the registered vehicles array' do
+      @facility_1.add_service('Vehicle Registration')
       @facility_1.register_vehicle(@cruz)
       expect(@facility_1.registered_vehicles).to eq([@cruz])
+      expect(@facility_1.collected_fees).to eq(100)
+      expect(@cruz.registration_date).to eq(Date.today)
+      expect(@cruz.plate_type).to eq(:regular)
+      expect(@facility_1.collected_fees).to eq(100)
+
+      @facility_1.register_vehicle(@camaro)
+      expect(@camaro.registration_date).to eq(Date.today)
+      expect(@camaro.plate_type).to eq(:antique)
+
+      @facility_1.register_vehicle(@bolt)
+      expect(@bolt.registration_date).to eq(Date.today)
+      expect(@bolt.plate_type).to eq(:EV)
+      expect(@facility_1.collected_fees).to eq(325)
+    end
+  end
+
+  describe '#registered vehicle only in valid facillity' do
+    it 'will only allow you to register a vehicle if the facility has that service' do
+      expect(@facility_2.registered_vehicles).to eq([])
+      expect(@facility_2.services).to eq([])
+      @facility_2.register_vehicle(@bolt)
+      expect(@facility_2.registered_vehicles).to eq([])
+      expect(@facility_2.collected_fees).to eq(0)
     end
   end
 end
