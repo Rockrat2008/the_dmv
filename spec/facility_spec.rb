@@ -14,8 +14,8 @@ RSpec.describe Facility do
 
     #adding registrant functionality for iteration 2
     @registrant_1 = Registrant.new('Bruce', 18, true)
-    # @registrant_2 = Registrant.new('Penny', 16, {:written => false, :license => false, :renewed => false})
-    # @registrant_3 = Registrant.new('Tucker', 15, {:written => false, :license => false, :renewed => false})
+    @registrant_2 = Registrant.new('Penny', 16)
+    @registrant_3 = Registrant.new('Tucker', 15)
 
   end
   describe '#initialize' do
