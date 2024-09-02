@@ -55,7 +55,7 @@ class Facility
     end
   end
 
-  def administer_road_test
+  # def administer_road_test
     
-  end
+  # end
 end
