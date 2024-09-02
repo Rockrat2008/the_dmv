@@ -125,7 +125,25 @@ RSpec.describe Facility do
       @registrant_2.earn_permit
       expect(@facility_1.administer_written_test(@registrant_2)).to eq(true)
       expect(@facility_1.administer_road_test(@registrant_2)).to eq(true)
-      require 'pry'; binding.pry
+    end
+  end
+
+  describe 'renew license' do
+    it 'Tests if you can renew your icense' do
+      expect(@facility_1.renew_drivers_license(@registrant_1)).to eq(false)
+      @facility_1.add_service("Written Test")
+      @facility_1.add_service("Road Test")
+      @facility_1.add_service("Renew License")
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+      expect(@facility_1.administer_road_test(@registrant_1)).to eq(true)
+      expect(@facility_1.renew_drivers_license(@registrant_1)).to eq(true)
+
+      expect(@facility_1.renew_drivers_license(@registrant_3)).to eq(false)
+
+      @registrant_2.earn_permit
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(true)
+      expect(@facility_1.administer_road_test(@registrant_2)).to eq(true)
+      expect(@facility_1.renew_drivers_license(@registrant_2)).to eq(true)
     end
   end
 end
