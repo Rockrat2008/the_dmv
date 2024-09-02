@@ -110,9 +110,22 @@ RSpec.describe Facility do
     end
   end
 
-  # describe 'registrant road test' do
-  #   it 'Tests road tests - updating registrants and facilities licensing' do
-      
-  #   end
-  # end
+  describe 'registrant road test' do
+    it 'Tests road tests - updating registrants and facilities licensing' do
+      expect(@facility_1.administer_road_test(@registrant_3)).to eq(false)
+      @registrant_3.earn_permit
+      expect(@facility_1.administer_road_test(@registrant_3)).to eq(false)
+
+      expect(@facility_1.administer_road_test(@registrant_1)).to eq(false)
+      @facility_1.add_service("Written Test")
+      @facility_1.add_service("Road Test")
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+      expect(@facility_1.administer_road_test(@registrant_1)).to eq(true)
+
+      @registrant_2.earn_permit
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(true)
+      expect(@facility_1.administer_road_test(@registrant_2)).to eq(true)
+      require 'pry'; binding.pry
+    end
+  end
 end
