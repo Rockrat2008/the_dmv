@@ -110,9 +110,9 @@ RSpec.describe Facility do
     end
   end
 
-  describe 'registrant road test' do
-    it 'Tests road tests - updating registrants and facilities licensing' do
+  # describe 'registrant road test' do
+  #   it 'Tests road tests - updating registrants and facilities licensing' do
       
-    end
-  end
+  #   end
+  # end
 end
