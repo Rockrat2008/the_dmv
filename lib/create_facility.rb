@@ -19,6 +19,5 @@ class CreateFacility
             puts "Not a vailid file"
           end
         end
-        require 'pry'; binding.pry
     end
 end
