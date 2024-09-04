@@ -5,19 +5,12 @@ class Registrant
                   :permit,
                   :license_data
 
+                  @name = name
     def initialize(name, age, license_data = {written: false, license: false, renewed: false}, permit: false)
         @name = name
         @age = age
         @permit = permit
         @license_data = license_data
-    end
-
-    def name
-        @name
-    end
-
-    def age
-        @age
     end
 
     def permit?
